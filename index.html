@@ -29,11 +29,21 @@
   <div id="controls">
     <label for="date-select">Select date:</label>
     <select id="date-select">
-      <!-- 在这里，添加所有可用的日期 -->
-      <option value="2022-06-01-2022-06-30">2022-06-01 to 2022-06-30</option>
-      <option value="2022-07-01-2022-07-31">2022-07-01 to 2022-07-31</option>
-      <!-- ...更多日期选项 -->
+      <option value="01/06/2022~30/06/2022">2022-06-01 to 2022-06-30</option>
+      <option value="01/07/2022~31/07/2022">2022-07-01 to 2022-07-31</option>
+      <option value="01/08/2022~31/08/2022">2022-08-01 to 2022-08-31</option>
+      <option value="01/09/2022~30/09/2022">2022-09-01 to 2022-09-30</option>
+      <option value="01/10/2022~31/10/2022">2022-10-01 to 2022-10-31</option>
+      <option value="01/11/2022~30/11/2022">2022-11-01 to 2022-11-30</option>
+      <option value="01/12/2022~31/12/2022">2022-12-01 to 2022-12-31</option>
+      <option value="01/01/2023~31/01/2023">2023-01-01 to 2023-01-31</option>
+      <option value="01/02/2023~28/02/2023">2023-02-01 to 2023-02-28</option>
+      <option value="01/03/2023~31/03/2023">2023-03-01 to 2023-03-31</option>
+      <option value="01/04/2023~30/04/2023">2023-04-01 to 2023-04-30</option>
+      <option value="01/05/2023~31/05/2023">2023-05-01 to 2023-05-31</option>
+      <option value="01/06/2023~30/06/2023">2023-06-01 to 2023-06-30</option>
     </select>
+
   </div>
   <div id="chart-container"></div>
   <script src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
@@ -46,8 +56,7 @@
     var app = {};
 
     // 将原始数据储存在一个对象中
-
-    export const data = {
+    const trueData = {
       '01/06/2022~30/06/2022': [
         100, 43.98, 34.28,
         28.77, 27.4, 26.32,
@@ -129,12 +138,6 @@
     }
 
 
-    var rawData = {
-      "2022-06-01-2022-06-30": [100, 43.98, 34.28, 28.77, 27.40, 26.32, 25.45, 24.72, 21.54, 18.37],
-      "2022-07-01-2022-07-31": [100, 44.10, 34.50, 29.00, 69.60, 26.50, 45.60, 24.90, 21.70, 18.50]
-      // ...更多日期数据
-    };
-
     var option;
 
     function setChartOption(data) {
@@ -161,11 +164,11 @@
     }
 
     // 设置初始图表选项
-    setChartOption(rawData["2022-06-01-2022-06-30"]);
+    setChartOption(trueData["01/06/2022~30/06/2022"]);
 
     // 当日期选择器的值改变时，更新图表
     document.getElementById('date-select').addEventListener('change', function (event) {
-      setChartOption(rawData[event.target.value]);
+      setChartOption(trueData[event.target.value]);
     });
 
     window.addEventListener('resize', myChart.resize);
